@@ -1,4 +1,12 @@
 <template name="bodyTemplate">
-	{{> carousel}}
-	{{> products}}
+	{{#if hasDashboardAccess}}
+	<div>
+		{{> products}}
+	</div>
+	{{else}}
+	<div>
+		{{> carousel}}
+		{{> products}}
+	</div>
+	{{/if}}
 </template>
