@@ -24,10 +24,6 @@ function paymentAlert(errorMessage) {
   return $(".alert").removeClass("hidden").text(errorMessage);
 }
 
-// function hidePaymentAlert() {
-//   return $(".alert").addClass("hidden").text("");
-// }
-
 function handlePaystackSubmitError(error) {
   const serverError = error !== null ? error.message : void 0;
   if (serverError) {
@@ -120,79 +116,3 @@ AutoForm.addHooks("paystack-payment-form", {
     }
   }
 });
-
-// AutoForm.addHooks("paystack-payment-form", {
-//   onSubmit: function (doc) {
-//     submitting = true;
-//     const template = this.template;
-//     hidePaymentAlert();
-//     const form = {
-//       name: doc.payerName,
-//       email: doc.email
-//     };
-//     // const storedCard = form.type.charAt(0).toUpperCase() + form.type.slice(1) + " " + doc.cardNumber.slice(-4);
-//     Meteor.subscribe("Packages", Reaction.getShopId());
-//     const packageData = Packages.findOne({
-//       name: "paystack-paymentmethod",
-//       shopId: Reaction.getShopId()
-//     });
-
-//     PaystackPop.setup({
-//       key: "pk_test_3e29eeb73fd3622146141f4420caf388184604ed",
-//       email: form.email,
-//       amount: 100000,
-//       container: "paystackEmbedContainer",
-//       callback: function (response) {
-//         console.log(response);
-//         alert("successfully subscribed. transaction ref is ' + response.reference");
-
-//         Paystack.authorize(form, {
-//           total: Cart.findOne().getTotal(),
-//           currency: Shops.findOne().currency
-//         }, function (error, transaction) {
-//           submitting = false;
-//           let paymentMethod;
-//           if (error) {
-//             handlePaystackSubmitError(error);
-//             uiEnd(template, "Resubmit payment");
-//           } else {
-//             if (transaction.saved === true) {
-//               submitting = false;
-//               paymentMethod = {
-//                 processor: "Paystack",
-//                 paymentPackageId: packageData._id,
-//                 paymentSettingsKey: packageData.registry[0].settingsKey,
-//                 // storedCard: storedCard,
-//                 method: "credit",
-//                 transactionId: transaction.transactionId,
-//                 riskLevel: transaction.riskLevel,
-//                 currency: transaction.currency,
-//                 amount: transaction.amount,
-//                 status: transaction.status,
-//                 mode: "authorize",
-//                 createdAt: new Date(),
-//                 transactions: []
-//               };
-//               paymentMethod.transactions.push(transaction.response);
-//               Meteor.call("cart/submitPayment", paymentMethod);
-//             } else {
-//               handlePaystackSubmitError(transaction.error);
-//               uiEnd(template, "Resubmit payment");
-//             }
-//           }
-//         });
-//       }
-//     }).openIframe();
-//     return false;
-//   },
-//   beginSubmit: function () {
-//     this.template.$(":input").attr("disabled", true);
-//     this.template.$("#btn-complete-order").text("Submitting ");
-//     return this.template.$("#btn-processing").removeClass("hidden");
-//   },
-//   endSubmit: function () {
-//     if (!submitting) {
-//       return uiEnd(this.template, "Complete your order");
-//     }
-//   }
-// });

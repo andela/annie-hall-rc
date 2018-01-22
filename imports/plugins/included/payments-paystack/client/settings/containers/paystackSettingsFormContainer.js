@@ -15,13 +15,9 @@ class PaystackSettingsFormContainer extends Component {
       sKey: "278302390293",
       pKey: "278302390293"
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.saveUpdate = this.saveUpdate.bind(this);
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     e.preventDefault();
     this.setState({
       sKey: e.target.value,
@@ -29,9 +25,7 @@ class PaystackSettingsFormContainer extends Component {
     });
   }
 
-  handleSubmit(settings) {
-    // e.preventDefault();
-
+  handleSubmit = (settings) => {
     const packageId = this.props.packageData._id;
     const { settingsKey } = this.props.packageData.registry[0];
 
@@ -49,7 +43,7 @@ class PaystackSettingsFormContainer extends Component {
     this.saveUpdate(fields, packageId, settingsKey);
   }
 
-  saveUpdate(fields, id, settingsKey) {
+  saveUpdate = (fields, id, settingsKey) => {
     Meteor.call("registry/update", id, settingsKey, fields, (err) => {
       if (err) {
         return Alerts.toast(i18next.t("admin.settings.saveFailed"), "error");
