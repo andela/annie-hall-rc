@@ -6,7 +6,7 @@ import Init from "./init";
 import Prerender from "./prerender";
 import { initTemplates } from "/server/api/core/templates";
 import env from "./env";
-
+import RestAPIs from "./RestAPI";
 
 export default function () {
   Accounts();
@@ -17,4 +17,5 @@ export default function () {
   Init();
   Prerender();
   env();
+  RestAPIs();
 }
