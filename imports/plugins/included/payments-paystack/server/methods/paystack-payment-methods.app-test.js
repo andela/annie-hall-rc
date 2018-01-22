@@ -101,7 +101,7 @@ describe("Submit payment", function () {
     /** this is a ridiculous timeout for a test that should run in subseconds
      * but a bug in the Meteor test runner (or something) seems to make this test stall
      * it actually stalls after the entire test is completed
-     * */
+     */
     this.timeout(30000);
     const cardData = {
       name: "Test User",
