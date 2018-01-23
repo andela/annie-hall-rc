@@ -16,8 +16,7 @@ class LanguageDropDown extends Component {
   buttonElement() {
     return (
       <Components.Button containerStyle={{ color: "#000" }}>
-        <i className="fa fa-language fa-lg"/>&nbsp;
-        <i className="fa fa-caret-down"/>
+        <h5 className="text-center">EN <span> <i className="fa fa-caret-down"/></span></h5>
       </Components.Button>
     );
   }
