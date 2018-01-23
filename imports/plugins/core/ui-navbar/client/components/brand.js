@@ -23,10 +23,11 @@ class Brand extends Component {
       <a className="brand" onClick={this.handleClick}>
         {this.props.logo &&
           <div className="logo">
-            <img src={this.props.logo} />
+            {<img src={this.props.logo} />}
           </div>
         }
-        <span className="title">{this.props.title}</span>
+        <img src="/resources/rc-logo.png" width="70" />
+        {/* <span className="title">{this.props.title}</span> */}
       </a>
     );
   }
