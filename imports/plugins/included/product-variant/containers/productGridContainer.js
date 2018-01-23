@@ -151,6 +151,7 @@ const wrapComponent = (Comp) => (
             canEdit={this.props.canEdit}
             isSearch={this.props.isSearch}
             unmountMe={this.props.unmountMe}
+            /* loadMoreProducts={this.props.loadMoreProducts} */
           />
         </Components.DragDropProvider>
       );

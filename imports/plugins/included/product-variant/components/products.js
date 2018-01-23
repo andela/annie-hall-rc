@@ -66,6 +66,7 @@ class Products extends Component {
         productIds={getIds({ tags: products })}
         canEdit={Reaction.hasPermission("createProduct")}
         products={products}
+        /* loadMoreProducts={this.props.loadProducts(event)} */
       />
     );
   }
@@ -133,7 +134,7 @@ class Products extends Component {
         return (
           <div id="container-main">
             {this.renderProductGrid()}
-            {this.renderLoadMoreProductsButton()}
+            {/* this.renderLoadMoreProductsButton() */}
             {this.renderSpinner()}
           </div>
         );
