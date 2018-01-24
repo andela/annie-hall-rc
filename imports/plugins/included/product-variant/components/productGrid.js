@@ -15,7 +15,6 @@ class ProductGrid extends Component {
       lastIndex: 12,
       hasMore: true
     };
-    // this.generateProducts = this.generateProducts.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
