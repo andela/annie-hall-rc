@@ -28,16 +28,11 @@ class NavBar extends Component {
     shop: PropTypes.object
   }
 
-  constructor(props) {
-    super(props);
-    this.startIntroBtn = this.startIntroBtn.bind(this);
-  }
-
   state = {
     navBarVisible: false
   }
 
-  startIntroBtn(event) {
+  startIntroBtn = (event) => {
     event.preventDefault();
     startIntro.startManualTour();
   }
