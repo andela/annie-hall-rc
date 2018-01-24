@@ -10,14 +10,13 @@ class ProductGrid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allProducts: this.props.products,
+      allProducts: props.products,
       nextProducts: [],
       lastIndex: 12,
       hasMore: true
     };
-    this.generateProducts = this.generateProducts.bind(this);
+    // this.generateProducts = this.generateProducts.bind(this);
   }
-
 
   componentWillReceiveProps(nextProps) {
     if (this.state.allProducts.length > 12) {
@@ -27,7 +26,7 @@ class ProductGrid extends Component {
     }
   }
 
-  generateProducts() {
+  generateProducts = () => {
     const moreProducts = this.state.allProducts.slice(this.state.lastIndex, this.state.lastIndex + 12);
     const currentProducts = this.state.nextProducts.concat(moreProducts);
     setTimeout(() => {
@@ -60,7 +59,6 @@ class ProductGrid extends Component {
       </div>
     );
   }
-
 
   render() {
     return (
