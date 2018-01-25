@@ -39,24 +39,15 @@ class AddToCartButton extends Component {
           <div>
             <center>
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fanniehallrc%2F&tabs=timeline&width=500&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=100248953877700"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fanniehallrc%2F&tabs=timeline&width=500&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=100248953877700"
                 width="500"
-                height="400"
+                height="130"
                 style={{ border: "none", overflow: "hidden" }}
                 scrolling="no"
                 frameBorder="0"
                 allowTransparency="true"
               />
               <br />
-              <iframe
-                src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fwww.facebook.com%2Fanniehallrc%2F&layout=button_count&size=large&mobile_iframe=true&appId=100248953877700&width=84&height=28"
-                width="84"
-                height="28"
-                style={{ border: "none", overflow: "hidden" }}
-                scrolling="no"
-                frameBorder="0"
-                allowTransparency="true"
-              />&nbsp;
 
               <a href="https://twitter.com/anniehall_rc?ref_src=twsrc%5Etfw"
                 className="twitter-btn"

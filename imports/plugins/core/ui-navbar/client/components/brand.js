@@ -26,7 +26,7 @@ class Brand extends Component {
             <img src={this.props.logo} />
           </div>
         }
-        <span className="title">{this.props.title}</span>
+        <img src="/resources/rc-logo.png" width="70" />
       </a>
     );
   }
