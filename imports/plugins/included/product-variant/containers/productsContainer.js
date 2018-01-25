@@ -32,7 +32,7 @@ function loadMoreProducts() {
     if (threshold) {
       if (!target[0].getAttribute("visible")) {
         target[0].setAttribute("productScrollLimit", true);
-        Session.set("productScrollLimit", Session.get("productScrollLimit") + ITEMS_INCREMENT || 24);
+        Session.set("productScrollLimit", Session.get("productScrollLimit") + ITEMS_INCREMENT || 12);
       }
     } else {
       if (target[0].getAttribute("visible")) {

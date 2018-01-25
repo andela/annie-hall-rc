@@ -133,7 +133,6 @@ class Products extends Component {
         return (
           <div id="container-main">
             {this.renderProductGrid()}
-            {this.renderLoadMoreProductsButton()}
             {this.renderSpinner()}
           </div>
         );
