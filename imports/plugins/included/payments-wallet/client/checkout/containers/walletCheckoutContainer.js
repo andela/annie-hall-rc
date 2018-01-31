@@ -62,7 +62,7 @@ const handlers = {
 
         const paymentMethod = {
           processor: "Wallet",
-          method: "wallet",
+          method: "credit",
           paymentPackageId: packageData._id,
           paymentSettingsKey: packageData.registry[0].settingsKey,
           transactionId: Random.id(),

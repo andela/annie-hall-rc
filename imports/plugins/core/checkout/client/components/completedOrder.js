@@ -4,6 +4,7 @@ import { Components } from "@reactioncommerce/reaction-components";
 import CompletedShopOrders from "./completedShopOrders";
 import CompletedOrderPaymentMethod from "./completedOrderPaymentMethods";
 import CompletedOrderSummary from "./completedOrderSummary";
+import CancelOrderButton from "./cancelOrderButton";
 import AddEmail from "./addEmail";
 
 /**
@@ -102,6 +103,10 @@ const CompletedOrder = ({ order, orderId, shops, orderSummary, paymentMethods, h
         </div>
         <CompletedOrderSummary shops={shops} orderSummary={orderSummary} isProfilePage={isProfilePage} />
         {/* This is the right side / side content */}
+        <br />
+        <div className="cancel-order-body">
+          <CancelOrderButton />
+        </div>
       </div>
 
     </div>
