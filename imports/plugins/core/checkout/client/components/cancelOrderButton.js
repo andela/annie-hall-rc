@@ -1,20 +1,31 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-class CancelOrderButton extends React.Component {
-	click = (event) => {
-	  event.preventDefault();
-	}
-	render() {
+const CancelOrderButton = ({ cancelOrder, order }) => {
 	  return (
-	    <div className="cancel-order-button">
-	      <button
-	        className="btn-warning btn btn-large"
-	        onClick={this.click}
-	      >
-					Cancel order
-	      </button>
-	    </div>
+    <div>
+      {
+        order.workflow.status !== "cancelled" ?
+          (
+            <div>
+	    				<div className="cancel-order-button">
+	     				 <button
+  								className="btn-warning btn btn-large"
+  								onClick={cancelOrder}
+	      				>
+							Cancel order
+	      			</button>
+	    				</div>
+            </div>
+          ) :
+          " "
+      }
+    </div>
 	  );
-	}
-}
+};
+
+CancelOrderButton.propTypes = {
+  cancelOrder: PropTypes.func.isRequired,
+  order: PropTypes.object.isRequired
+};
 export default CancelOrderButton;
