@@ -11,6 +11,7 @@ Meteor.methods({
    * @return {String} ownerEmail
    */
   "wallet/create-user-wallet": function (ownerEmail) {
+    console.log("createeeeee", ownerEmail);
     check(ownerEmail, String);
 
     Wallets.insert({ ownerEmail });
@@ -38,6 +39,7 @@ Meteor.methods({
 
   "wallet/get-user-walletId": function (ownerEmail) {
     check(ownerEmail, String);
+    // console.log(ownerEmail);
     const wallet = Wallets.findOne({ ownerEmail });
     if (!wallet) {
       throw new Meteor.Error("Error", "User not found for the provided email address");
@@ -61,27 +63,35 @@ Meteor.methods({
     } = transaction;
 
     const updateBalance = (currentBalance, updateAmount, ownerEmail) => {
-      Wallets.update({ ownerEmail }, {
-        $set: {
-          balance: currentBalance + updateAmount
-        }
-      });
+      try {
+        Wallets.update({ ownerEmail }, {
+          $set: {
+            balance: currentBalance + updateAmount
+          }
+        });
+        return 1;
+      } catch (error) {
+        return 0;
+      }
     };
+
+    let updateResult;
 
     if (to === from) {
       const wallet = Wallets.findOne({ ownerEmail: from });
       const currentBalance = wallet.balance;
-      updateBalance(currentBalance, amount, from);
+      updateResult = updateBalance(currentBalance, amount, from);
     } else {
       if (transactionType === "credit") {
         const receiverWallet = Wallets.findOne({ ownerEmail: to });
-        const currentBalance =  receiverWallet.balance;
-        updateBalance(currentBalance, amount, to);
+        const currentBalance = receiverWallet.balance;
+        updateResult = updateBalance(currentBalance, amount, to);
       } else {
         const senderWallet = Wallets.findOne({ ownerEmail: from });
-        const currentBalance =  senderWallet.balance;
-        updateBalance(currentBalance, -amount, from);
+        const currentBalance = senderWallet.balance;
+        updateResult = updateBalance(currentBalance, -amount, from);
       }
     }
+    return updateResult;
   }
 });

@@ -5,12 +5,12 @@ const CancelOrderButton = ({ cancelOrder, order }) => {
 	  return (
     <div>
       {
-        order.workflow.status !== "cancelled" ?
+        order.workflow.status !== "coreOrderWorkflow/canceled" ?
           (
             <div>
 	    				<div className="cancel-order-button">
 	     				 <button
-  								className="btn-warning btn btn-large"
+  								className="btn-warning btn btn-block"
   								onClick={cancelOrder}
 	      				>
 							Cancel order

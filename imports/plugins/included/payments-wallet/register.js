@@ -6,7 +6,19 @@ Reaction.registerPackage({
   icon: "fa fa-google-wallet",
   autoEnable: true,
   settings: {
-    enabled: true
+    mode: false,
+    apiKey: "",
+    example: {
+      enabled: false
+    },
+    wallet: {
+      enabled: true,
+      support: [
+        "Authorize",
+        "Capture",
+        "Refund"
+      ]
+    }
   },
   registry: [
     {
