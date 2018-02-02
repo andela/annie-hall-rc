@@ -67,13 +67,13 @@ class NavBar extends Component {
   }
 
   renderBrand() {
-    const shop = this.props.shop || { name: "" };
+    // const shop = this.props.shop || { name: "" };
     const logo = this.props.brandMedia && this.props.brandMedia.url();
 
     return (
       <Components.Brand
         logo={logo}
-        title={shop.name}
+        // title={shop.name}
       />
     );
   }
@@ -158,7 +158,7 @@ class NavBar extends Component {
         {this.renderCurrency()}
         {this.renderMainDropdown()}
         {this.renderCartContainerAndPanel()}
-        {this.renderTourButton()}
+        {/* {this.renderTourButton()} */}
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { registerComponent } from "@reactioncommerce/reaction-components";
 import { Reaction } from "/client/api";
+import startIntro from "../../../../included/tour/tour";
 
 class Brand extends Component {
   static propTypes = {
@@ -17,7 +18,17 @@ class Brand extends Component {
     event.preventDefault();
     Reaction.Router.go("/");
   }
-
+  startIntroBtn = (event) => {
+    event.preventDefault();
+    startIntro.startManualTour();
+  }
+  renderTourButton() {
+    return (
+      <div className="tourBtn">
+        <a href="#" className="take-tour" onClick={this.startIntroBtn}>Take a Tour</a>
+      </div>
+    );
+  }
   render() {
     return (
       <a className="brand" onClick={this.handleClick}>
@@ -27,6 +38,9 @@ class Brand extends Component {
           </div>
         }
         <img src="/resources/rc-logo.png" width="70" />
+        <div className="tourBtn">
+          <a href="#" className="take-tour" onClick={this.startIntroBtn}>Take a Tour</a>
+        </div>
       </a>
     );
   }
