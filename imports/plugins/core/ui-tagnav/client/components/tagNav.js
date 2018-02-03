@@ -69,12 +69,7 @@ class TagNav extends Component {
         </div>
         <div className="navbar-items">
           <DragDropProvider>
-            <Components.TagList
-              {...this.props}
-              isTagNav={true}
-              draggable={true}
-              enableNewTagForm={true}
-            >
+            <Components.TagList >
               <div className="dropdown-container">
                 <Components.TagGroup
                   {...this.props}
