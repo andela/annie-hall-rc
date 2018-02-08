@@ -34,9 +34,8 @@ class CompletedOrder extends React.Component {
       isProfilePage: props.isProfilePage,
       isCancelled: false
     };
-    this.cancelOrder = this.cancelOrder.bind(this);
   }
-  cancelOrder(event) {
+  cancelOrder = event => {
     event.preventDefault();
     Alerts.alert({
       title: "Cancel Order",
@@ -231,8 +230,7 @@ class CompletedOrder extends React.Component {
             <div className="col-md-12">
               {
 
-                this.state.isCancelled ?
-                  " " :
+                this.state.isCancelled &&
                   (<CancelOrderButton isCancelled={this.state.isCancelled} cancelOrder={this.cancelOrder} order={this.state.order} />)
               }
             </div>

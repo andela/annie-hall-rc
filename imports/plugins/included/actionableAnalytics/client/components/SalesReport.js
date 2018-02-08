@@ -7,7 +7,10 @@ import { SalesTable } from "./Table/SalesTable";
 
 export const SalesReport = (props) => {
   const {
-    productSalesData, selectedTab, handleSalesInputChange, productSearchTerm
+    productSalesData,
+    selectedTab,
+    handleSalesInputChange,
+    productSearchTerm
   } = props;
   return (
     <div

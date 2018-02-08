@@ -4,8 +4,7 @@ import { registerComponent } from "@reactioncommerce/reaction-components";
 import { SearchInput } from "../components/input/SearchInput";
 import { InventoryTable } from "../components/Table/InventoryTable";
 
-export const InventoryReport = (props) => {
-  const { productInventoryData, selectedTab } = props;
+export const InventoryReport = ({ productInventoryData, selectedTab, handleInventoryInputChange }) => {
   return (
     <div
       id="tab3"
@@ -17,7 +16,7 @@ export const InventoryReport = (props) => {
           <SearchInput
             inputName="inventorySearchInput"
             inputPlaceholder="Type product name"
-            handleInputChange={props.handleInventoryInputChange}
+            handleInputChange={handleInventoryInputChange}
             inputClass="col-sm-6 col-sm-offset-3"
           />
         </div>

@@ -25,7 +25,7 @@ export const RetailDashBoard = (props) => {
         boxTitle="REVENUE"
         boxValue={formatPriceString(totalSales)}
       />
-      {/* Avaerage sales board */}
+      {/* Average sales board */}
       <Box
         boxTitle="AVERAGE SALES"
         boxValue={formatPriceString(salesPerDay)}

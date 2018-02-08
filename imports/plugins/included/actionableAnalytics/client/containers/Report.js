@@ -1,10 +1,5 @@
 import React from "react";
-import $ from "jquery";
 import _ from "lodash";
-import { Template } from "meteor/templating";
-import { Orders } from "/lib/collections";
-import { formatPriceString } from "/client/api";
-import { ReactiveDict } from "meteor/reactive-dict";
 import { registerComponent } from "@reactioncommerce/reaction-components";
 import { ReportSideBar } from "../components/ReportSideBar";
 import { RetailDashBoard } from "../components/RetailDashBoard";
@@ -23,10 +18,7 @@ import { DateTimePicker } from "../components/datePicker/DateTimePicker";
  * @extends {React.Component}
  */
 export class Report extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+    state = {
       value: "allProduct",
       statValue: "quantitySold",
       ordersPlaced: 0,
@@ -52,20 +44,19 @@ export class Report extends React.Component {
       productStatSearchTerm: "",
       selectedTab: "tab1"
     };
-  }
 
-  componentDidMount() {
+    componentDidMount() {
     // fetch product category documents
-    this.getAnalytics(this.state.fromDate, this.state.toDate);
-  }
-
-
-  componentDidUpdate() {
-    // get product analysis when date is changed
-    if (this.state.dateIsChange) {
       this.getAnalytics(this.state.fromDate, this.state.toDate);
     }
-  }
+
+
+    componentDidUpdate() {
+    // get product analysis when date is changed
+      if (this.state.dateIsChange) {
+        this.getAnalytics(this.state.fromDate, this.state.toDate);
+      }
+    }
   /**
    * @memberof Report
    * @description it fetches orders by date arguments and returns

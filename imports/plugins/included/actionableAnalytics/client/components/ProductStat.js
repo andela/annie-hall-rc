@@ -6,8 +6,14 @@ import { SearchInput } from "../components/input/SearchInput";
 
 export const ProductStat = (props) => {
   const {
-    salesData, selectedTab, handleProductTypeChange, handleOptionChange, statValue,
-    handleProductStatInputChange, productStatSearchTerm, filterValue
+    salesData,
+    selectedTab,
+    handleProductTypeChange,
+    handleOptionChange,
+    statValue,
+    handleProductStatInputChange,
+    productStatSearchTerm,
+    filterValue
   } = props;
   return (
     <div

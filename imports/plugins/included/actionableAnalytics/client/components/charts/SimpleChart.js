@@ -4,7 +4,10 @@ import { BarChart, XAxis, YAxis, Legend, CartesianGrid, Tooltip, Bar } from "rec
 
 export const SimpleChart = (props) => {
   const {
-    fetchedData, statValue, productStatSearchTerm, filterValue
+    fetchedData,
+    statValue,
+    productStatSearchTerm,
+    filterValue
   } = props;
   const mappedData = [];
   let sortedData = [];

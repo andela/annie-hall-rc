@@ -20,6 +20,7 @@ export const DateTimePicker = props => (
         </span>
       </div>
     </div>
-  </div>);
+  </div>
+);
 
 export default DateTimePicker;

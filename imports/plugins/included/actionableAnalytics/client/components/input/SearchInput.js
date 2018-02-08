@@ -20,6 +20,7 @@ export const SearchInput = props => (
         </span>
       </div>
     </div>
-  </div>);
+  </div>
+);
 
 export default SearchInput;
