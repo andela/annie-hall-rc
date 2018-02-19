@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { check } from "meteor/check";
+import { Reaction } from "/server/api";
 
 import { Wallets, WalletHistories } from "/lib/collections";
 
@@ -14,7 +15,6 @@ Meteor.methods({
 
     Wallets.insert({ ownerEmail });
   },
-
   "wallet/get-user-walletId": function (ownerEmail) {
     check(ownerEmail, String);
     const wallet = Wallets.findOne({ ownerEmail });
@@ -40,27 +40,35 @@ Meteor.methods({
     } = transaction;
 
     const updateBalance = (currentBalance, updateAmount, ownerEmail) => {
-      Wallets.update({ ownerEmail }, {
-        $set: {
-          balance: currentBalance + updateAmount
-        }
-      });
+      try {
+        Wallets.update({ ownerEmail }, {
+          $set: {
+            balance: currentBalance + updateAmount
+          }
+        });
+        return 1;
+      } catch (error) {
+        return 0;
+      }
     };
+
+    let updateResult;
 
     if (to === from) {
       const wallet = Wallets.findOne({ ownerEmail: from });
       const currentBalance = wallet.balance;
-      updateBalance(currentBalance, amount, from);
+      updateResult = updateBalance(currentBalance, amount, from);
     } else {
       if (transactionType === "credit") {
         const receiverWallet = Wallets.findOne({ ownerEmail: to });
-        const currentBalance =  receiverWallet.balance;
-        updateBalance(currentBalance, amount, to);
+        const currentBalance = receiverWallet.balance;
+        updateResult = updateBalance(currentBalance, amount, to);
       } else {
         const senderWallet = Wallets.findOne({ ownerEmail: from });
-        const currentBalance =  senderWallet.balance;
-        updateBalance(currentBalance, -amount, from);
+        const currentBalance = senderWallet.balance;
+        updateResult = updateBalance(currentBalance, -amount, from);
       }
     }
+    return updateResult;
   }
 });
