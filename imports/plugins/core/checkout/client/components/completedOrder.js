@@ -230,7 +230,7 @@ class CompletedOrder extends React.Component {
             <div className="col-md-12">
               {
 
-                this.state.isCancelled &&
+                !this.state.isCancelled &&
                   (<CancelOrderButton isCancelled={this.state.isCancelled} cancelOrder={this.cancelOrder} order={this.state.order} />)
               }
             </div>
