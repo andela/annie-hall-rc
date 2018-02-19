@@ -126,7 +126,8 @@ class CompletedOrder extends React.Component {
               />
 
             </p >
-          </div> {
+          </div>
+          {
             this.state.shops.map((shop) => {
               const shopKey = Object.keys(shop);
               return (

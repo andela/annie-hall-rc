@@ -5,7 +5,7 @@ const CancelOrderButton = ({ cancelOrder, order }) => {
 	  return (
     <div>
       {
-        order.workflow.status !== "coreOrderWorkflow/canceled" ?
+        order.workflow.status !== "coreOrderWorkflow/canceled" &&
           (
             <div>
 	    				<div className="cancel-order-button">
@@ -17,8 +17,7 @@ const CancelOrderButton = ({ cancelOrder, order }) => {
 	      			</button>
 	    				</div>
             </div>
-          ) :
-          " "
+          )
       }
     </div>
 	  );

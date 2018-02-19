@@ -23,6 +23,128 @@ class SearchModal extends Component {
     unmountMe: PropTypes.func,
     value: PropTypes.string
   }
+  state = {
+    allProducts: [],
+    productsBeforeSortAndFilter: [],
+    productsAfterSortAndFilter: [],
+    displaySortAndFilter: "",
+    showAllProducts: null,
+    lowPriceFilter: 0,
+    highPriceFilter: 0
+  };
+  componentWillMount() {
+    const allProducts = Collections.Products.find({ ancestors: [] }, { sort: { createdAt: -1 }, limit: 10 }).fetch();
+    let bool = false;
+    if (!this.props.value && allProducts.length > 0) {
+      bool = true;
+    }
+    this.setState({
+      allProducts,
+      productsBeforeSortAndFilter: this.props.value ? this.props.products : [],
+      productsAfterSortAndFilter: this.props.value ? this.props.products : allProducts,
+      displaySortAndFilter: this.props.products.length > 1 ? "inline-block" : "none",
+      showAllProducts: bool
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      productsBeforeSortAndFilter: nextProps.products,
+      productsAfterSortAndFilter: nextProps.products,
+      displaySortAndFilter: nextProps.products.length > 1 ? "inline-block" : "none",
+      showAllProducts: this.props.value < 1
+    });
+  }
+
+  handleSortByPrice = event => {
+    const selected = event.target.value;
+    const unsorted = [...this.state.productsAfterSortAndFilter];
+    let sortedProducts = [];
+    if (selected === "highest-price") {
+      sortedProducts = _.orderBy(unsorted, ["price.max"], ["desc"]);
+      this.setState({ productsAfterSortAndFilter: sortedProducts });
+    } else if (selected === "lowest-price") {
+      sortedProducts = _.orderBy(unsorted, ["price.max"], ["asc"]);
+      this.setState({ productsAfterSortAndFilter: sortedProducts });
+    } else {
+      this.setState({ productsAfterSortAndFilter: this.state.productsBeforeSortAndFilter });
+    }
+  }
+
+  handleSortByName = event => {
+    const selected = event.target.value;
+    const unsorted = [...this.state.productsAfterSortAndFilter];
+    let sortedProducts = [];
+    if (selected === "asc") {
+      sortedProducts = _.orderBy(unsorted, ["title"], ["asc"]);
+      this.setState({ productsAfterSortAndFilter: sortedProducts });
+    }
+    if (selected === "desc") {
+      sortedProducts = _.orderBy(unsorted, ["title"], ["desc"]);
+      this.setState({ productsAfterSortAndFilter: sortedProducts });
+    } else {
+      this.setState({ productsAfterSortAndFilter: this.state.productsBeforeSortAndFilter });
+    }
+  }
+  handlePriceChange = event => {
+    if (event.target.name === "lowest") {
+      this.setState({ lowPriceFilter: event.target.value });
+    }
+    if (event.target.name === "highest") {
+      this.setState({ highPriceFilter: event.target.value });
+    }
+  }
+
+  handleFilterByPrice = event => {
+    event.preventDefault();
+    const filtered = this.state.productsBeforeSortAndFilter.filter(
+      (product) => product.price.max >= this.state.lowPriceFilter && product.price.max <= this.state.highPriceFilter);
+    this.setState({ productsAfterSortAndFilter: filtered });
+  }
+
+  renderSortByPrice() {
+    return (
+      <div className="select-input col-md-3">
+        <p>Sort By Price</p>
+        <div className="rui select">
+          <select name="sort" id="product-sort" onChange={this.handleSortByPrice}>
+            <option value="all" defaultValue>--Sort By--</option>
+            <option value="highest-price">Highest price</option>
+            <option value="lowest-price">Lowest Price</option>
+          </select>
+        </div>
+      </div>
+    );
+  }
+
+  renderSortByName() {
+    return (
+      <div className="select-input col-md-3">
+        <p>Sort By Name</p>
+        <div className="rui select">
+          <select name="" id="product-filter" onChange={this.handleSortByName}>
+            <option value="all" defaultValue>--Sort Order--</option>
+            <option value="asc" >Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+      </div>
+    );
+  }
+
+  renderFilterByPrice() {
+    return (
+      <div className="price-input col-md-3">
+        <span>Filter By Price Range:</span>
+        <form className="form-input">
+          <input type="number" name="lowest" onChange={this.handlePriceChange} className="input-field" />
+          <span className="input-text"> to </span>
+          <input type="number" name="highest" onChange={this.handlePriceChange} className="input-field" />
+          <button className="price-filter-btn" onClick={this.handleFilterByPrice} >Filter</button>
+        </form>
+      </div>
+    );
+  }
 
   constructor(props) {
     super(props);
