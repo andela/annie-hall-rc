@@ -15,10 +15,9 @@ Meteor.methods({
 
     Wallets.insert({ ownerEmail });
   },
-
+  
   "wallet/get-user-walletId": function (ownerEmail) {
     check(ownerEmail, String);
-    // console.log(ownerEmail);
     const wallet = Wallets.findOne({ ownerEmail });
     if (!wallet) {
       throw new Meteor.Error("Error", "User not found for the provided email address");
