@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { Components } from "@reactioncommerce/reaction-components";
 import * as Collections from "/lib/collections";
 import { Reaction } from "/client/api";
 import { TextField, Button, IconButton, SortableTableLegacy } from "@reactioncommerce/reaction-ui";
@@ -23,27 +22,21 @@ class SearchModal extends Component {
     unmountMe: PropTypes.func,
     value: PropTypes.string
   }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      allProducts: [],
-      productsBeforeSortAndFilter: [],
-      productsAfterSortAndFilter: [],
-      displaySortAndFilter: "",
-      showAllProducts: null,
-      lowPriceFilter: 0,
-      highPriceFilter: 0
-    };
-  }
+  state = {
+    allProducts: [],
+    productsBeforeSortAndFilter: [],
+    productsAfterSortAndFilter: [],
+    displaySortAndFilter: "",
+    showAllProducts: null,
+    lowPriceFilter: 0,
+    highPriceFilter: 0
+  };
   componentWillMount() {
     const allProducts = Collections.Products.find({ ancestors: [] }, { sort: { createdAt: -1 }, limit: 10 }).fetch();
-    let bool;
-    if (this.props.value && this.props.products.length > 0) {
-      bool = false;
-    } else if (!this.props.value && allProducts.length > 0) {
+    let bool = false;
+    if (!this.props.value && allProducts.length > 0) {
       bool = true;
-    } else {   bool = false; }
+    }
     this.setState({
       allProducts,
       productsBeforeSortAndFilter: this.props.value ? this.props.products : [],
@@ -162,7 +155,6 @@ class SearchModal extends Component {
           textFieldStyle={{ marginBottom: 0 }}
           onChange={this.props.handleChange}
           value={this.props.value}
-          placeholder="enter atleast 3 characters"
         />
         <Button
           className="search-clear"
