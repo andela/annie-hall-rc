@@ -15,6 +15,7 @@ Meteor.methods({
 
     Wallets.insert({ ownerEmail });
   },
+  
   "wallet/get-user-walletId": function (ownerEmail) {
     check(ownerEmail, String);
     const wallet = Wallets.findOne({ ownerEmail });

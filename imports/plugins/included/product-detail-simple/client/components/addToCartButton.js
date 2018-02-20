@@ -17,9 +17,10 @@ class AddToCartButton extends Component {
     if (this.hasVariants) {
       return (
         <div>
-          <div className="pdp add-to-cart block">
-            <input
-              className="form-control input-md"
+          <div className="pdp block">
+            <span>QTY:&nbsp;</span>
+            <span><input
+              className="input-md"
               id="add-to-cart-quantity"
               min="1"
               name="addToCartQty"
@@ -27,6 +28,11 @@ class AddToCartButton extends Component {
               type="number"
               value={this.props.cartQuantity}
             />
+            <br />
+            <br />
+            </span>
+          </div>
+          <div className="pdp add-to-cart block">
             <button
               className="input-group-addon add-to-cart-text js-add-to-cart"
               data-i18n="productDetail.addToCart"
