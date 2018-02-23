@@ -1,7 +1,6 @@
 import React from "react";
 import { registerComponent } from "@reactioncommerce/reaction-components";
 
-
 export const ReportSideBar = props => (
   <div className="col-sm-12 col-md-12 col-lg-1">
     <ul className="nav nav-pills">

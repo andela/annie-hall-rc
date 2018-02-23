@@ -3,7 +3,6 @@ import _ from "lodash";
 
 import { formatPriceString } from "/client/api";
 
-
 export const SalesTable = (props) => {
   let isMatched = false;
   const { fetchedTableData, tableHeadingArray, productSearchTerm } = props;

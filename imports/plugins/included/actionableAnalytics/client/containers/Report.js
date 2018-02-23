@@ -11,7 +11,6 @@ import { getAverageSales } from "../helpers/getAverageSales";
 import { Meteor } from "meteor/meteor";
 import { DateTimePicker } from "../components/datePicker/DateTimePicker";
 
-
 /**
  * @export
  * @class Report
@@ -89,7 +88,6 @@ export class Report extends React.Component {
             ordersCancelled: analyticsItems.ordersCancelled,
             grossProfit: (analyticsItems.totalSales - analyticsItems.totalCostPrice)
           });
-
           this.setState({
             salesPerDay: getAverageSales(this.state.totalSales, fromDate, toDate)
           });

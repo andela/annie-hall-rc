@@ -4,7 +4,6 @@ import { registerComponent } from "@reactioncommerce/reaction-components";
 import { SearchInput } from "../components/input/SearchInput";
 import { SalesTable } from "./Table/SalesTable";
 
-
 export const SalesReport = (props) => {
   const {
     productSalesData,

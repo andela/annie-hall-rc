@@ -2,8 +2,7 @@ import React from "react";
 import _ from "lodash";
 
 export const InventoryTable = ({ fetchedTableData, tableHeadingArray }) => {
-  const tableHeading = tableHeadingArray.map(item =>
-    (<th key={item} >{item}</th>));
+  const tableHeading = tableHeadingArray.map(item => <th key={item} >{item}</th>);
   const tablerow = fetchedTableData.map(item =>
     (
       <tr key={item._id} >

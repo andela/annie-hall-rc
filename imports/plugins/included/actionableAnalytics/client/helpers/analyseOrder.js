@@ -14,7 +14,6 @@ export const analyseOrder = (fetchedOrders, fromDate, toDate) => {
   let ordersCancelled = 0;
   let totalCostPrice = 0;
 
-
   fetchedOrders.forEach((order) => {
     const orderDate = order.createdAt;
     const dateString = orderDate.toISOString().split("T")[0];

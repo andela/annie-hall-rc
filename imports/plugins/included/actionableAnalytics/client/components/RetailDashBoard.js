@@ -3,7 +3,6 @@ import { registerComponent } from "@reactioncommerce/reaction-components";
 import { formatPriceString } from "/client/api";
 import { Box } from "../components/box/Box";
 
-
 export const RetailDashBoard = (props) => {
   const { OrdersData } = props;
   const {

@@ -4,8 +4,7 @@ import { registerComponent } from "@reactioncommerce/reaction-components";
 import { SearchInput } from "../components/input/SearchInput";
 import { InventoryTable } from "../components/Table/InventoryTable";
 
-export const InventoryReport = ({ productInventoryData, selectedTab, handleInventoryInputChange }) => {
-  return (
+export const InventoryReport = ({ productInventoryData, selectedTab, handleInventoryInputChange }) => (
     <div
       id="tab3"
       style={{ display: selectedTab === "tab3" ? "block" : "none" }}
@@ -39,8 +38,6 @@ export const InventoryReport = ({ productInventoryData, selectedTab, handleInven
       </div>
     </div>
   );
-};
-
 registerComponent("InventoryReport", InventoryReport);
 
 export default InventoryReport;
