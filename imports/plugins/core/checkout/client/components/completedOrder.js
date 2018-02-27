@@ -232,7 +232,7 @@ class CompletedOrder extends React.Component {
               {
 
                 !this.state.isCancelled &&
-                   (<CancelOrderButton isCancelled={this.state.isCancelled} cancelOrder={this.cancelOrder} order={this.state.order} />)
+                  (<CancelOrderButton isCancelled={this.state.isCancelled} cancelOrder={this.cancelOrder} order={this.state.order} />)
               }
             </div>
           </div>
