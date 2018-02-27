@@ -49,7 +49,6 @@ export class Report extends React.Component {
       this.getAnalytics(this.state.fromDate, this.state.toDate);
     }
 
-
     componentDidUpdate() {
     // get product analysis when date is changed
       if (this.state.dateIsChange) {

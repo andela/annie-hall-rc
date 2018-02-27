@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const DateTimePicker = props => (
   <div className={props.dateClass} >
     <div className="form-group">
